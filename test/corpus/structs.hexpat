@@ -10,6 +10,7 @@ struct Point {
 	(statement
 		(type_def
 			(struct_def
+				(keyword_struct)
 				(identifier)
 				(maybe_type_field
 					(type_field
