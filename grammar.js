@@ -1,3 +1,12 @@
+/**
+ * @file Hexpat grammar for tree-sitter
+ * @author NathanSnail
+ * @license MIT
+ */
+
+/// <reference types="tree-sitter-cli/dsl" />
+// @ts-check
+
 module.exports = grammar({
 	name: "hexpat",
 	extras: $ => [
