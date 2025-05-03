@@ -296,11 +296,11 @@ struct Image {
 												(expr
 													(expr_leaf
 														(identifier)))
-												(token_mul)
+												operator: (token_mul)
 												(expr
 													(expr_leaf
 														(identifier)))))
-										(token_mul)
+										operator: (token_mul)
 										(expr
 											(expr_leaf
 												(number)))))
@@ -402,7 +402,7 @@ struct Image {
 										(expr
 											(expr_leaf
 												(identifier)))
-										(token_mul)
+										operator: (token_mul)
 										(expr
 											(expr_leaf
 												(identifier)))))

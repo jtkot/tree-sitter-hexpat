@@ -80,7 +80,6 @@ module.exports = grammar({
 			$.token_rbrace
 		),
 
-		signedness: $ => prec(1, choice("signed", "unsigned")),
 		bitfield_type: $ => choice($.signedness, $.type),
 
 		bitfield_type_field: $ => seq(
@@ -110,15 +109,17 @@ module.exports = grammar({
 			$.token_semi
 		),
 
-		expr_leaf: $ => prec(1, choice($.number, $.identifier)),
-
-		sum: $ => prec.left(1, seq($.expr, $.token_add, $.expr)),
-		sub: $ => prec.left(1, seq($.expr, $.token_sub, $.expr)),
-		mul: $ => prec.left(2, seq($.expr, $.token_mul, $.expr)),
-		div: $ => prec.left(2, seq($.expr, $.token_div, $.expr)),
+		sum: $ => prec.left(1, seq($.expr, field("operator", $.token_add), $.expr)),
+		sub: $ => prec.left(1, seq($.expr, field("operator", $.token_sub), $.expr)),
+		mul: $ => prec.left(2, seq($.expr, field("operator", $.token_mul), $.expr)),
+		div: $ => prec.left(2, seq($.expr, field("operator", $.token_div), $.expr)),
 		expr: $ => choice($.expr_leaf, $.sub, $.sum, $.mul, $.div),
+		expr_leaf: $ => prec(1, choice($.number, $.identifier)),
 		statement: $ => choice($.assignment, $.type_def, $.using),
+
 		endianness: $ => choice("le", "be"),
+		signedness: $ => prec(1, choice("signed", "unsigned")),
+
 		number: $ => /\d+(\.\d*)?/,
 		integer: $ => /\d+/,
 		type_identifier: $ => $.identifier,
