@@ -11,21 +11,26 @@ struct Point {
 		(type_def
 			(struct_def
 				(keyword_struct)
-				(identifier)
+				struct_name: (identifier)
+				(token_lbrace)
 				(maybe_type_field
 					(type_field
 						(type
 							(type_identifier
 								(identifier)))
 						(specialised_field
-							(identifier))))
+							field_name: (identifier))
+						(token_semi)))
 				(maybe_type_field
 					(type_field
 						(type
 							(type_identifier
 								(identifier)))
 						(specialised_field
-									(identifier))))))))
+							field_name: (identifier))
+						(token_semi)))
+				(token_rbrace))
+			(token_semi))))
 
 ============
 Array Struct
@@ -39,18 +44,24 @@ struct Point10D {
 		(type_def
 			(struct_def
 				(keyword_struct)
-				(identifier)
+				struct_name: (identifier)
+				(token_lbrace)
 				(maybe_type_field
 					(type_field
 						(type
 							(type_identifier
 								(identifier)))
 						(specialised_field
-							(identifier)
+							field_name: (identifier)
 							(type_suffix
+								(token_lbracket)
 								(expr
 									(expr_leaf
-										(number)))))))))))
+										(number)))
+								(token_rbracket)))
+						(token_semi)))
+				(token_rbrace))
+			(token_semi))))
 
 ================
 Templated Struct
@@ -64,21 +75,29 @@ struct Array10<T> {
 		(type_def
 			(struct_def
 				(keyword_struct)
-				(identifier)
+				struct_name: (identifier)
 				(generic_decl
+					(token_lgeneric)
 					(generic_decl_param
-						(identifier)))
+						(identifier))
+					(token_rgeneric))
+				(token_lbrace)
 				(maybe_type_field
 					(type_field
 						(type
 							(type_identifier
 								(identifier)))
 						(specialised_field
-							(identifier)
+							field_name: (identifier)
 							(type_suffix
+								(token_lbracket)
 								(expr
 									(expr_leaf
-										(number)))))))))))
+										(number)))
+								(token_rbracket)))
+						(token_semi)))
+				(token_rbrace))
+			(token_semi))))
 
 =============
 Auto Template
@@ -92,21 +111,30 @@ struct IntArray<auto n> {
 		(type_def
 			(struct_def
 				(keyword_struct)
-				(identifier)
+				struct_name: (identifier)
 				(generic_decl
+					(token_lgeneric)
 					(generic_decl_param
-						(identifier)))
+						(keyword_auto)
+						(identifier))
+					(token_rgeneric))
+				(token_lbrace)
 				(maybe_type_field
 					(type_field
 						(type
 							(type_identifier
 								(identifier)))
 						(specialised_field
-							(identifier)
+							field_name: (identifier)
 							(type_suffix
+								(token_lbracket)
 								(expr
 									(expr_leaf
-										(identifier)))))))))))
+										(identifier)))
+								(token_rbracket)))
+						(token_semi)))
+				(token_rbrace))
+			(token_semi))))
 
 =============
 Generic Array
@@ -120,23 +148,33 @@ struct Array<T, auto n> {
 		(type_def
 			(struct_def
 				(keyword_struct)
-				(identifier)
+				struct_name: (identifier)
 				(generic_decl
+					(token_lgeneric)
 					(generic_decl_param
 						(identifier))
+					(token_comma)
 					(generic_decl_param
-						(identifier)))
+						(keyword_auto)
+						(identifier))
+					(token_rgeneric))
+				(token_lbrace)
 				(maybe_type_field
 					(type_field
 						(type
 							(type_identifier
 								(identifier)))
 						(specialised_field
-							(identifier)
+							field_name: (identifier)
 							(type_suffix
+								(token_lbracket)
 								(expr
 									(expr_leaf
-										(identifier)))))))))))
+										(identifier)))
+								(token_rbracket)))
+						(token_semi)))
+				(token_rbrace))
+			(token_semi))))
 
 ========================
 Multiple fields per type
@@ -150,16 +188,21 @@ struct Point {
 		(type_def
 			(struct_def
 				(keyword_struct)
-				(identifier)
+				struct_name: (identifier)
+				(token_lbrace)
 				(maybe_type_field
 					(type_field
 						(type
 							(type_identifier
 								(identifier)))
 						(specialised_field
-							(identifier))
+							field_name: (identifier))
+						(token_comma)
 						(specialised_field
-							(identifier))))))))
+							field_name: (identifier))
+						(token_semi)))
+				(token_rbrace))
+			(token_semi))))
 
 =============
 Padded Struct
@@ -170,32 +213,40 @@ struct Point {
 	u8 y;
 };
 ---
-		(source_file
-			(statement
-				(type_def
-					(struct_def
-						(keyword_struct)
-						(identifier)
-						(maybe_type_field
-							(type_field
-								(type
-									(type_identifier
-										(identifier)))
-								(specialised_field
-									(identifier))))
-						(maybe_type_field
-							(padding
-								(keyword_padding)
-								(expr
-									(expr_leaf
-										(number)))))
-						(maybe_type_field
-							(type_field
-								(type
-									(type_identifier
-										(identifier)))
-								(specialised_field
-									(identifier))))))))
+(source_file
+	(statement
+		(type_def
+			(struct_def
+				(keyword_struct)
+				struct_name: (identifier)
+				(token_lbrace)
+				(maybe_type_field
+					(type_field
+						(type
+							(type_identifier
+								(identifier)))
+						(specialised_field
+							field_name: (identifier))
+						(token_semi)))
+				(maybe_type_field
+					(padding
+						(keyword_padding)
+						(token_lbracket)
+						(expr
+							(expr_leaf
+								(number)))
+						(token_rbracket)
+						(token_semi)))
+				(maybe_type_field
+					(type_field
+						(type
+							(type_identifier
+								(identifier)))
+						(specialised_field
+							field_name: (identifier))
+						(token_semi)))
+				(token_rbrace))
+			(token_semi))))
 
 =================
 Expression Struct
@@ -206,47 +257,57 @@ struct Image {
 	u8 data[w * h * 4];
 };
 ---
-	(source_file
-		(statement
-			(type_def
-				(struct_def
-					(keyword_struct)
-					(identifier)
-					(maybe_type_field
-						(type_field
-							(type
-								(type_identifier
-									(identifier)))
-							(specialised_field
-								(identifier))))
-					(maybe_type_field
-						(type_field
-							(type
-								(type_identifier
-									(identifier)))
-							(specialised_field
-								(identifier))))
-					(maybe_type_field
-						(type_field
-							(type
-								(type_identifier
-									(identifier)))
-							(specialised_field
-								(identifier)
-								(type_suffix
-									(expr
-										(mul
-											(expr
-												(mul
-													(expr
-														(expr_leaf
-															(identifier)))
-													(expr
-														(expr_leaf
-															(identifier)))))
-											(expr
-												(expr_leaf
-													(number)))))))))))))
+(source_file
+	(statement
+		(type_def
+			(struct_def
+				(keyword_struct)
+				struct_name: (identifier)
+				(token_lbrace)
+				(maybe_type_field
+					(type_field
+						(type
+							(type_identifier
+								(identifier)))
+						(specialised_field
+							field_name: (identifier))
+						(token_semi)))
+				(maybe_type_field
+					(type_field
+						(type
+							(type_identifier
+								(identifier)))
+						(specialised_field
+							field_name: (identifier))
+						(token_semi)))
+				(maybe_type_field
+					(type_field
+						(type
+							(type_identifier
+								(identifier)))
+						(specialised_field
+							field_name: (identifier)
+							(type_suffix
+								(token_lbracket)
+								(expr
+									(mul
+										(expr
+											(mul
+												(expr
+													(expr_leaf
+														(identifier)))
+												(token_mul)
+												(expr
+													(expr_leaf
+														(identifier)))))
+										(token_mul)
+										(expr
+											(expr_leaf
+												(number)))))
+								(token_rbracket)))
+						(token_semi)))
+				(token_rbrace))
+			(token_semi))))
 
 ================
 Multiple Structs
@@ -264,75 +325,91 @@ struct Image {
 	RGBA8 pixels[w * h];
 };
 ---
-	(source_file
-		(statement
-			(type_def
-				(struct_def
-					(keyword_struct)
-					(identifier)
-					(maybe_type_field
-						(type_field
-							(type
-								(type_identifier
-									(identifier)))
-							(specialised_field
-								(identifier))))
-					(maybe_type_field
-						(type_field
-							(type
-								(type_identifier
-									(identifier)))
-							(specialised_field
-								(identifier))))
-					(maybe_type_field
-						(type_field
-							(type
-								(type_identifier
-									(identifier)))
-							(specialised_field
-								(identifier))))
-					(maybe_type_field
-						(type_field
-							(type
-								(type_identifier
-									(identifier)))
-							(specialised_field
-								(identifier)))))))
-		(statement
-			(type_def
-				(struct_def
-					(keyword_struct)
-					(identifier)
-					(maybe_type_field
-						(type_field
-							(type
-								(type_identifier
-									(identifier)))
-							(specialised_field
-								(identifier))))
-					(maybe_type_field
-						(type_field
-							(type
-								(type_identifier
-									(identifier)))
-							(specialised_field
-								(identifier))))
-					(maybe_type_field
-						(type_field
-							(type
-								(type_identifier
-									(identifier)))
-							(specialised_field
-								(identifier)
-								(type_suffix
-									(expr
-										(mul
-											(expr
-												(expr_leaf
-													(identifier)))
-											(expr
-												(expr_leaf
-													(identifier)))))))))))))
+(source_file
+	(statement
+		(type_def
+			(struct_def
+				(keyword_struct)
+				struct_name: (identifier)
+				(token_lbrace)
+				(maybe_type_field
+					(type_field
+						(type
+							(type_identifier
+								(identifier)))
+						(specialised_field
+							field_name: (identifier))
+						(token_semi)))
+				(maybe_type_field
+					(type_field
+						(type
+							(type_identifier
+								(identifier)))
+						(specialised_field
+							field_name: (identifier))
+						(token_semi)))
+				(maybe_type_field
+					(type_field
+						(type
+							(type_identifier
+								(identifier)))
+						(specialised_field
+							field_name: (identifier))
+						(token_semi)))
+				(maybe_type_field
+					(type_field
+						(type
+							(type_identifier
+								(identifier)))
+						(specialised_field
+							field_name: (identifier))
+						(token_semi)))
+				(token_rbrace))
+			(token_semi)))
+	(statement
+		(type_def
+			(struct_def
+				(keyword_struct)
+				struct_name: (identifier)
+				(token_lbrace)
+				(maybe_type_field
+					(type_field
+						(type
+							(type_identifier
+								(identifier)))
+						(specialised_field
+							field_name: (identifier))
+						(token_semi)))
+				(maybe_type_field
+					(type_field
+						(type
+							(type_identifier
+								(identifier)))
+						(specialised_field
+							field_name: (identifier))
+						(token_semi)))
+				(maybe_type_field
+					(type_field
+						(type
+							(type_identifier
+								(identifier)))
+						(specialised_field
+							field_name: (identifier)
+							(type_suffix
+								(token_lbracket)
+								(expr
+									(mul
+										(expr
+											(expr_leaf
+												(identifier)))
+										(token_mul)
+										(expr
+											(expr_leaf
+												(identifier)))))
+								(token_rbracket)))
+						(token_semi)))
+				(token_rbrace))
+			(token_semi))))
 
 ==============
 Endian Structs
@@ -344,45 +421,54 @@ struct SomeFile {
 	u8 data[compressed_size];
 };
 ---
-	(source_file
-		(statement
-			(type_def
-				(struct_def
-					(keyword_struct)
-					(identifier)
-					(maybe_type_field
-						(type_field
-							(type
-								(endianness)
-								(type_identifier
-									(identifier)))
-							(specialised_field
-								(identifier))))
-					(maybe_type_field
-						(type_field
-							(type
-								(endianness)
-								(type_identifier
-									(identifier)))
-							(specialised_field
-								(identifier))))
-					(maybe_type_field
-						(type_field
-							(type
-								(endianness)
-								(type_identifier
-									(identifier)))
-							(specialised_field
-								(identifier))))
-					(maybe_type_field
-						(type_field
-							(type
-								(type_identifier
-									(identifier)))
-							(specialised_field
-								(identifier)
-								(type_suffix
-									(expr
-										(expr_leaf
-											(identifier)))))))))))
+(source_file
+	(statement
+		(type_def
+			(struct_def
+				(keyword_struct)
+				struct_name: (identifier)
+				(token_lbrace)
+				(maybe_type_field
+					(type_field
+						(type
+							(endianness)
+							(type_identifier
+								(identifier)))
+						(specialised_field
+							field_name: (identifier))
+						(token_semi)))
+				(maybe_type_field
+					(type_field
+						(type
+							(endianness)
+							(type_identifier
+								(identifier)))
+						(specialised_field
+							field_name: (identifier))
+						(token_semi)))
+				(maybe_type_field
+					(type_field
+						(type
+							(endianness)
+							(type_identifier
+								(identifier)))
+						(specialised_field
+							field_name: (identifier))
+						(token_semi)))
+				(maybe_type_field
+					(type_field
+						(type
+							(type_identifier
+								(identifier)))
+						(specialised_field
+							field_name: (identifier)
+							(type_suffix
+								(token_lbracket)
+								(expr
+									(expr_leaf
+										(identifier)))
+								(token_rbracket)))
+						(token_semi)))
+				(token_rbrace))
+			(token_semi))))
 
