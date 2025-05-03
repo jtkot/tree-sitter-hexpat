@@ -88,7 +88,7 @@ module.exports = grammar({
 
 		struct_def: $ => seq(
 			$.keyword_struct,
-			field("struct_name", $.identifier),
+			$.type_identifier,
 			optional($.generic_decl),
 			$.token_lbrace,
 			repeat($.maybe_type_field),
@@ -99,7 +99,7 @@ module.exports = grammar({
 
 		bitfield_type_field: $ => seq(
 			optional($.bitfield_type),
-			$.identifier,
+			$.type_identifier,
 			":",
 			$.integer,
 			$.token_semi

@@ -5,7 +5,7 @@
 (generic_decl_param generic_name: (identifier) @type)
 (signedness) @keyword
 (endianness) @keyword
-(identifier) @comment
+(identifier) @variable
 (multiline_comment) @comment
 (line_comment) @comment
 (token_lbrace) @token
