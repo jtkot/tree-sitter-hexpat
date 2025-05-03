@@ -16,16 +16,14 @@ struct Point {
 				(maybe_type_field
 					(type_field
 						(type
-							(type_identifier
-								(identifier)))
+							(type_identifier))
 						(specialised_field
 							field_name: (identifier))
 						(token_semi)))
 				(maybe_type_field
 					(type_field
 						(type
-							(type_identifier
-								(identifier)))
+							(type_identifier))
 						(specialised_field
 							field_name: (identifier))
 						(token_semi)))
@@ -49,8 +47,7 @@ struct Point10D {
 				(maybe_type_field
 					(type_field
 						(type
-							(type_identifier
-								(identifier)))
+							(type_identifier))
 						(specialised_field
 							field_name: (identifier)
 							(type_suffix
@@ -79,14 +76,13 @@ struct Array10<T> {
 				(generic_decl
 					(token_lgeneric)
 					(generic_decl_param
-						(identifier))
+						generic_name: (identifier))
 					(token_rgeneric))
 				(token_lbrace)
 				(maybe_type_field
 					(type_field
 						(type
-							(type_identifier
-								(identifier)))
+							(type_identifier))
 						(specialised_field
 							field_name: (identifier)
 							(type_suffix
@@ -122,8 +118,7 @@ struct IntArray<auto n> {
 				(maybe_type_field
 					(type_field
 						(type
-							(type_identifier
-								(identifier)))
+							(type_identifier))
 						(specialised_field
 							field_name: (identifier)
 							(type_suffix
@@ -152,7 +147,7 @@ struct Array<T, auto n> {
 				(generic_decl
 					(token_lgeneric)
 					(generic_decl_param
-						(identifier))
+						generic_name: (identifier))
 					(token_comma)
 					(generic_decl_param
 						(keyword_auto)
@@ -162,8 +157,7 @@ struct Array<T, auto n> {
 				(maybe_type_field
 					(type_field
 						(type
-							(type_identifier
-								(identifier)))
+							(type_identifier))
 						(specialised_field
 							field_name: (identifier)
 							(type_suffix
@@ -193,8 +187,7 @@ struct Point {
 				(maybe_type_field
 					(type_field
 						(type
-							(type_identifier
-								(identifier)))
+							(type_identifier))
 						(specialised_field
 							field_name: (identifier))
 						(token_comma)
@@ -223,8 +216,7 @@ struct Point {
 				(maybe_type_field
 					(type_field
 						(type
-							(type_identifier
-								(identifier)))
+							(type_identifier))
 						(specialised_field
 							field_name: (identifier))
 						(token_semi)))
@@ -240,8 +232,7 @@ struct Point {
 				(maybe_type_field
 					(type_field
 						(type
-							(type_identifier
-								(identifier)))
+							(type_identifier))
 						(specialised_field
 							field_name: (identifier))
 						(token_semi)))
@@ -267,24 +258,21 @@ struct Image {
 				(maybe_type_field
 					(type_field
 						(type
-							(type_identifier
-								(identifier)))
+							(type_identifier))
 						(specialised_field
 							field_name: (identifier))
 						(token_semi)))
 				(maybe_type_field
 					(type_field
 						(type
-							(type_identifier
-								(identifier)))
+							(type_identifier))
 						(specialised_field
 							field_name: (identifier))
 						(token_semi)))
 				(maybe_type_field
 					(type_field
 						(type
-							(type_identifier
-								(identifier)))
+							(type_identifier))
 						(specialised_field
 							field_name: (identifier)
 							(type_suffix
@@ -335,32 +323,28 @@ struct Image {
 				(maybe_type_field
 					(type_field
 						(type
-							(type_identifier
-								(identifier)))
+							(type_identifier))
 						(specialised_field
 							field_name: (identifier))
 						(token_semi)))
 				(maybe_type_field
 					(type_field
 						(type
-							(type_identifier
-								(identifier)))
+							(type_identifier))
 						(specialised_field
 							field_name: (identifier))
 						(token_semi)))
 				(maybe_type_field
 					(type_field
 						(type
-							(type_identifier
-								(identifier)))
+							(type_identifier))
 						(specialised_field
 							field_name: (identifier))
 						(token_semi)))
 				(maybe_type_field
 					(type_field
 						(type
-							(type_identifier
-								(identifier)))
+							(type_identifier))
 						(specialised_field
 							field_name: (identifier))
 						(token_semi)))
@@ -375,24 +359,21 @@ struct Image {
 				(maybe_type_field
 					(type_field
 						(type
-							(type_identifier
-								(identifier)))
+							(type_identifier))
 						(specialised_field
 							field_name: (identifier))
 						(token_semi)))
 				(maybe_type_field
 					(type_field
 						(type
-							(type_identifier
-								(identifier)))
+							(type_identifier))
 						(specialised_field
 							field_name: (identifier))
 						(token_semi)))
 				(maybe_type_field
 					(type_field
 						(type
-							(type_identifier
-								(identifier)))
+							(type_identifier))
 						(specialised_field
 							field_name: (identifier)
 							(type_suffix
@@ -432,8 +413,7 @@ struct SomeFile {
 					(type_field
 						(type
 							(endianness)
-							(type_identifier
-								(identifier)))
+							(type_identifier))
 						(specialised_field
 							field_name: (identifier))
 						(token_semi)))
@@ -441,8 +421,7 @@ struct SomeFile {
 					(type_field
 						(type
 							(endianness)
-							(type_identifier
-								(identifier)))
+							(type_identifier))
 						(specialised_field
 							field_name: (identifier))
 						(token_semi)))
@@ -450,16 +429,14 @@ struct SomeFile {
 					(type_field
 						(type
 							(endianness)
-							(type_identifier
-								(identifier)))
+							(type_identifier))
 						(specialised_field
 							field_name: (identifier))
 						(token_semi)))
 				(maybe_type_field
 					(type_field
 						(type
-							(type_identifier
-								(identifier)))
+							(type_identifier))
 						(specialised_field
 							field_name: (identifier)
 							(type_suffix
