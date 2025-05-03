@@ -2,9 +2,10 @@
 (integer) @number
 (number) @number
 (specialised_field field_name: (identifier) @member)
+(generic_decl_param generic_name: (identifier) @type)
 (signedness) @keyword
 (endianness) @keyword
-(identifier) @variable
+(identifier) @comment
 (multiline_comment) @comment
 (line_comment) @comment
 (token_lbrace) @token

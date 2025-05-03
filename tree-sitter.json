@@ -9,6 +9,7 @@
       "file-types": [
         "hexpat"
       ],
+      "highlights": "queries/highlights.scm",
       "injection-regex": "^hexpat$",
       "class-name": "TreeSitterHexpat"
     }

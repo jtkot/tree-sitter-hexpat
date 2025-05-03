@@ -4,8 +4,8 @@ root = true
 charset = utf-8
 
 [*.{json,toml,yml,gyp}]
-indent_style = tab
-indent_size = 6
+indent_style = space
+indent_size = 2
 
 [*.js]
 indent_style = tab

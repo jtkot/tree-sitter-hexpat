@@ -7,6 +7,8 @@
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
+const identifier = /[a-zA-Z_][\w-]*/;
+
 module.exports = grammar({
 	name: "hexpat",
 	extras: $ => [
@@ -19,7 +21,7 @@ module.exports = grammar({
 
 		using: $ => seq(
 			$.keyword_using,
-			$.identifier,
+			$.type_identifier,
 			$.token_eq,
 			$.arraylike_type,
 			$.token_semi
@@ -34,16 +36,20 @@ module.exports = grammar({
 		),
 
 		generic_decl_param: $ => choice(
-			$.identifier,
+			field("generic_name", $.identifier),
 			seq($.keyword_auto, $.identifier)
 		),
 
-		generic: $ => seq($.token_lgeneric,
+		generic: $ => seq(
+			$.token_lgeneric,
 			sep1($.generic_param, $.token_comma),
 			$.token_rgeneric
 		),
 
-		generic_param: $ => choice($.expr, $.arraylike_type),
+		generic_param: $ => choice(
+			$.arraylike_type,
+			$.expr
+		),
 
 		type: $ => seq(
 			optional($.endianness),
@@ -131,8 +137,8 @@ module.exports = grammar({
 
 		number: $ => /\d+(\.\d*)?/,
 		integer: $ => /\d+/,
-		type_identifier: $ => $.identifier,
-		identifier: $ => /[a-zA-Z][\w-]*/,
+		type_identifier: $ => prec(1, identifier),
+		identifier: $ => identifier,
 		multiline_comment: $ => /\/\*[.\n]*\*\//,
 		line_comment: $ => /\/\/.*\n/,
 
@@ -140,7 +146,6 @@ module.exports = grammar({
 		token_rbrace: $ => "}",
 		token_lgeneric: $ => "<",
 		token_rgeneric: $ => ">",
-		token_rbracket: $ => "]",
 		token_lbracket: $ => "[",
 		token_rbracket: $ => "]",
 		token_comma: $ => ",",
