@@ -11,7 +11,7 @@ struct Point {
 		(type_def
 			(struct_def
 				(keyword_struct)
-				struct_name: (identifier)
+				struct_name: (type_identifier)
 				(token_lbrace)
 				(maybe_type_field
 					(type_field
@@ -42,7 +42,7 @@ struct Point10D {
 		(type_def
 			(struct_def
 				(keyword_struct)
-				struct_name: (identifier)
+				struct_name: (type_identifier)
 				(token_lbrace)
 				(maybe_type_field
 					(type_field
@@ -72,7 +72,7 @@ struct Array10<T> {
 		(type_def
 			(struct_def
 				(keyword_struct)
-				struct_name: (identifier)
+				struct_name: (type_identifier)
 				(generic_decl
 					(token_lgeneric)
 					(generic_decl_param
@@ -107,7 +107,7 @@ struct IntArray<auto n> {
 		(type_def
 			(struct_def
 				(keyword_struct)
-				struct_name: (identifier)
+				struct_name: (type_identifier)
 				(generic_decl
 					(token_lgeneric)
 					(generic_decl_param
@@ -143,7 +143,7 @@ struct Array<T, auto n> {
 		(type_def
 			(struct_def
 				(keyword_struct)
-				struct_name: (identifier)
+				struct_name: (type_identifier)
 				(generic_decl
 					(token_lgeneric)
 					(generic_decl_param
@@ -182,7 +182,7 @@ struct Point {
 		(type_def
 			(struct_def
 				(keyword_struct)
-				struct_name: (identifier)
+				struct_name: (type_identifier)
 				(token_lbrace)
 				(maybe_type_field
 					(type_field
@@ -211,7 +211,7 @@ struct Point {
 		(type_def
 			(struct_def
 				(keyword_struct)
-				struct_name: (identifier)
+				struct_name: (type_identifier)
 				(token_lbrace)
 				(maybe_type_field
 					(type_field
@@ -253,7 +253,7 @@ struct Image {
 		(type_def
 			(struct_def
 				(keyword_struct)
-				struct_name: (identifier)
+				struct_name: (type_identifier)
 				(token_lbrace)
 				(maybe_type_field
 					(type_field
@@ -318,7 +318,7 @@ struct Image {
 		(type_def
 			(struct_def
 				(keyword_struct)
-				struct_name: (identifier)
+				struct_name: (type_identifier)
 				(token_lbrace)
 				(maybe_type_field
 					(type_field
@@ -354,7 +354,7 @@ struct Image {
 		(type_def
 			(struct_def
 				(keyword_struct)
-				struct_name: (identifier)
+				struct_name: (type_identifier)
 				(token_lbrace)
 				(maybe_type_field
 					(type_field
@@ -407,7 +407,7 @@ struct SomeFile {
 		(type_def
 			(struct_def
 				(keyword_struct)
-				struct_name: (identifier)
+				struct_name: (type_identifier)
 				(token_lbrace)
 				(maybe_type_field
 					(type_field
