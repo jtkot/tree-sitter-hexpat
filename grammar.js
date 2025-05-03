@@ -7,7 +7,7 @@
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
-const identifier = /[a-zA-Z_][\w-]*/;
+const identifier = /[a-zA-Z_][\w]*/;
 
 module.exports = grammar({
 	name: "hexpat",
