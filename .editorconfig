@@ -3,6 +3,11 @@ root = true
 [*]
 charset = utf-8
 
+# more convenient for writing tests to have exact character counts
+[*.{hexpat}]
+indent_style = space
+indent_size = 6
+
 [*.{json,toml,yml,gyp}]
 indent_style = space
 indent_size = 2

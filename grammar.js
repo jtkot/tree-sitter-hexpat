@@ -36,7 +36,7 @@ module.exports = grammar({
 		),
 
 		generic_decl_param: $ => choice(
-			field("generic_name", $.identifier),
+			field("generic_name", $.type_identifier),
 			seq($.keyword_auto, $.identifier)
 		),
 
@@ -139,7 +139,11 @@ module.exports = grammar({
 		integer: $ => /\d+/,
 		type_identifier: $ => prec(1, identifier),
 		identifier: $ => identifier,
-		multiline_comment: $ => /\/\*[.\n]*\*\//,
+		multiline_comment: $ => seq(
+			'/*',
+			/[^*]*/, // todo: make this work with comments like /* * */
+			'*/',
+		),
 		line_comment: $ => /\/\/.*\n/,
 
 		token_lbrace: $ => "{",

@@ -18,12 +18,11 @@ def write(s):
 for test in tests:
     title = test[0]
     title_len = len(title)
-    write("=" * title_len)
-    write(title)
-    write("=" * title_len)
+    write("// " +"=" * title_len)
+    write("// " + title)
+    write("// " + "=" * title_len)
     test_body = test[1].split("---")[0].strip()
-    write(test_body)
-    write("---")
+    write(test_body.replace("\t", " " * 6))
     tree = subprocess.run(
         ["tree-sitter", "parse", "/dev/stdin"],
         input=test_body,
@@ -31,6 +30,7 @@ for test in tests:
         capture_output=True,
     ).stdout
     tree = re.sub(" \\[.*-.*\\]", "", tree.replace("  ", "\t"))
-    write(tree)
+    write("")
+    # write(tree)
 
-open(test_source, "w").write(out)
+open(sys.argv[2], "w").write(out)
