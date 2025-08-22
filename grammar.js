@@ -167,10 +167,10 @@ export default grammar({
 	}
 });
 
+/**
+ * @param {RuleOrLiteral} el
+ * @param {RuleOrLiteral} joiner
+ */
 function sep(el, joiner) {
-	return optional(sep1(el, joiner))
-}
-
-function sep1(el, joiner) {
-	return seq(el, repeat(seq(joiner, el)))
+	return seq(el, repeat(seq(joiner, el)));
 }
