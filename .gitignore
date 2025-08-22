@@ -1,2 +1,5 @@
-tree-sitter-fluent.wasm
-src/*
+src/
+build/
+node_modules/
+
+tree-sitter-hexpat.wasm
