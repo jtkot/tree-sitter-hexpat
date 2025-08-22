@@ -1,6 +1,7 @@
 {
   "$schema": "https://www.schemastore.org/schemas/json/package.json",
   "name": "tree-sitter-hexpat",
+  "type": "module",
   "version": "0.1.0",
   "description": "Hexpat grammar for tree-sitter",
   "repository": "https://github.com/tree-sitter/tree-sitter-hexpat",

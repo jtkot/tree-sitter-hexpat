@@ -9,7 +9,7 @@
 
 const identifier = /[a-zA-Z_][\w]*/;
 
-module.exports = grammar({
+export default grammar({
 	name: "hexpat",
 	extras: $ => [
 		/\s/,
