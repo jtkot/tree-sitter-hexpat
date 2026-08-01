@@ -23,7 +23,7 @@ export default grammar({
 				$.arraylike_type,
 				$.token_semi,
 			),
-
+		
 		assignment: ($) => seq($.identifier, $.token_eq, $.expr),
 
 		generic_decl: ($) =>
@@ -162,7 +162,8 @@ export default grammar({
 			),
 		expr: ($) => choice($.expr_leaf, $.sub, $.sum, $.mul, $.div),
 		expr_leaf: ($) => prec(1, choice($.number, $.identifier)),
-		statement: ($) => choice($.assignment, $.type_def, $.using),
+		statement: ($) => choice($.assignment, $.type_def, $.using, $.preproc_pragma),
+		preproc_pragma: ($) => seq($.token_hash, $.preproc_keyword_pragma, $.identifier, choice("\n", "\0")),
 
 		endianness: (_) => choice("le", "be"),
 		signedness: (_) => prec(1, choice("signed", "unsigned")),
@@ -178,7 +179,7 @@ export default grammar({
 		multiline_comment: (_) =>
 			seq(
 				"/*",
-				/[^*]*/, // todo: make this work with comments like /* * */
+				/.*?/, // todo: make this work with comments like /* * */
 				"*/",
 			),
 		line_comment: (_) => /\/\/.*\n/,
@@ -197,12 +198,14 @@ export default grammar({
 		token_sub: (_) => "-",
 		token_mul: (_) => "*",
 		token_div: (_) => "/",
+		token_hash: (_) => "#",
 		keyword_using: (_) => "using",
 		keyword_padding: (_) => "padding",
 		keyword_bitfield: (_) => "bitfield",
 		keyword_struct: (_) => "struct",
 		keyword_enum: (_) => "enum",
 		keyword_auto: (_) => "auto",
+		preproc_keyword_pragma: (_) => "pragma"
 	},
 });
 

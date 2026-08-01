@@ -22,6 +22,7 @@
 (token_mul) @operator
 (token_div) @operator
 (keyword_using) @keyword
+(keyword_enum) @keyword
 (keyword_padding) @keyword
 (keyword_bitfield) @keyword
 (keyword_struct) @keyword
